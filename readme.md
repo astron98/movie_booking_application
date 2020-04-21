@@ -27,13 +27,17 @@
     user: 'root',	//mysql username  
     password : ' ',	// type the mysql password which you have set.  
     database:'booking_movies'	// mysql database name  
-    
-6. Open a new-terminal(1st) and start the redis-server.  
+ 
+6. Open your terminal or GUI based-app for mysql and type the below 2 commands.  
+	NOTE: Here, the password asked will be of your MySQL.  
+    1. `mysql -u root -p -e "create database booking_movies"`  
+    2. `mysql -u root -p booking_movies < database.sql`  
+7. Open a new-terminal(1st) and start the redis-server.  
 	1. `redis-server &`  
 	2. `redis-cli`  
-7. And now open another terminal(2nd) for starting the nodejs server.  
+8. And now open another terminal(2nd) for starting the nodejs server.  
 	Command: `nodemon app.js`	(Now,the server will start at port:3000)  
-8. Lastly,open your Browser and enter this URL: `localhost:3000/home`  
+9. Lastly,open your Browser and enter this URL: `localhost:3000/home`  
 ---
 
 ### Version of all the softwares.  
