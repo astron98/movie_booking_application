@@ -1,0 +1,579 @@
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" type="image/png" href="../../../../img/logo-icon.png">
+      <title>Bookishow -  Seats</title>
+      <!-- Custom fonts for this template-->
+      <link href="../../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <!-- Custom styles for this template-->
+      <link href="../../../../css/osahan.min.css" rel="stylesheet">
+       <link href="../../../../css/seats.css" rel="stylesheet" type="text/css">
+       <style>
+        th:nth-child(1) {
+          display:none;
+        }
+       </style>
+   </head>
+   <body id="page-top">
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+         <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+                   <div class="sidebar-brand-icon">
+                      <img src="../../../../img/logo-icon.png" alt="">
+                   </div>
+                   <div class="sidebar-brand-text mx-3"><img src="../../../../img/logo.png" alt=""></div>
+                </a>
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                   <a class="nav-link" href="/movies">
+                   <i class="fas fa-fw fa-film"></i>
+                   <span>Movies</span></a>
+                </li>
+<!--
+                <li class="nav-item">
+                   <a class="nav-link" href="events.html">
+                   <i class="fas fa-fw fa-glass-cheers"></i>
+                   <span>Events</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="people.html">
+                   <i class="fas fa-fw fa-users"></i>
+                   <span>People</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="sports.html">
+                   <i class="fas fa-fw fa-futbol"></i>
+                   <span>Sports</span></a>
+                </li>
+-->
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">Extra</div>
+                <!-- Nav Item - Pages Collapse Menu -->
+<!--
+                <li class="nav-item">
+                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                   <i class="fas fa-fw fa-pager"></i>
+                   <span>Pages</span>
+                   </a>
+                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                      <div class="bg-white py-2 collapse-inner rounded">
+                         <h6 class="collapse-header">All Pages</h6>
+                         <a class="collapse-item" href="/movies">Movies</a>
+                         <a class="collapse-item" href="movies-detail.html">Movie Detail</a>
+                         <a class="collapse-item" href="events.html">Events</a>
+                         <a class="collapse-item" href="events-detail.html">Event Detail</a>
+                         <a class="collapse-item" href="people.html">People</a>
+                         <a class="collapse-item" href="people-detail.html">People Detail</a>
+                         <a class="collapse-item" href="sports.html">Sports</a>
+                         <a class="collapse-item" href="sports-detail.html">Sport Detail</a>
+                      </div>
+                   </div>
+                </li>
+-->
+                <li class="nav-item">
+                   <a class="nav-link" href="../../../../offers.html">
+                   <i class="fas fa-fw fa-fire"></i>
+                   <span>Offers</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                   <i class="fas fa-fw fa-clone"></i>
+                   <span>Extra Pages</span>
+                   </a>
+                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                      <div class="bg-white py-2 collapse-inner rounded">
+                         <h6 class="collapse-header">Login Screens:</h6>
+                         <a class="collapse-item" href="/login">Login</a>
+                         <a class="collapse-item" href="/signup">Register</a>
+<!--                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
+                         <div class="collapse-divider"></div>
+<!--                         <h6 class="collapse-header">Other Pages:</h6>-->
+<!--                         <a class="collapse-item" href="404.html">404 Page</a>-->
+<!--                         <a class="collapse-item" href="blank.html">Blank Page</a>-->
+                      </div>
+                   </div>
+                </li>
+    </ul>
+         <!-- End of Sidebar -->
+         <!-- Content Wrapper -->
+         <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+               <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-dark topbar mb-4 pl-0 static-top shadow">
+                  <!-- Sidebar Toggle (Topbar) -->
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                  <i class="fa fa-bars"></i>
+                  </button>
+                  <!-- Topbar Search -->
+                  <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
+                     <div class="input-group">
+                        <input type="text" class="form-control bg-white border-0 small" placeholder="Search for Movies, Events, Plays, Sports and Activities..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                           <button class="btn bg-white" type="button">
+                           <i class="fas fa-search fa-sm"></i>
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+                  <!-- Topbar Navbar -->
+                  <ul class="navbar-nav ml-auto">
+                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                     <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                           <form class="form-inline mr-auto w-100 navbar-search">
+                              <div class="input-group">
+                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                 <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </li>
+                      <!--  City Selection  -->
+                      <!-- Example single danger button -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <select class="form-control ml-3" name="city" id="city-button" required>
+                            <option value="city" selected>city</option>
+                            
+                            <!-- <option value="6">prison</option>
+                            <option value="7">rehab</option>
+                            <option value="8">watchlist</option> -->
+                        </select>
+                    </li>
+                      
+                     <!-- Nav Item - Alerts -->
+                     <li class="nav-item no-arrow mx-1">
+                        <a class="nav-link" href="../../../../offers.html">
+                           <i class="fas fa-fire fa-fw"></i>
+                           <!-- Counter - Alerts -->
+                           <span class="badge badge-danger bg-gradient-danger">NEW</span>
+                        </a>
+                     </li>
+<!--
+                     <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="fas fa-bell fa-fw"></i>
+                            Counter - Alerts 
+                           <span class="badge badge-danger badge-counter">8+</span>
+                        </a>
+                     </li>
+-->
+                     <!-- Nav Item - User Information -->
+                     <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Profile</span>
+                        <img class="img-profile rounded-circle" src="../../../../img/s4.png">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Profile
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-heart fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Watchlist
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-list-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Your Lists
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Account Settings
+                           </a>
+                           <div class="dropdown-divider"></div>
+                           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Logout
+                           </a>
+                        </div>
+                     </li>
+                  </ul>
+</nav>
+               <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                
+                <div class="inputForm">`
+                    <center>
+                    <!--  Name *: <input type="text" id="Username" required>-->
+                      Number of Seats *: <input type="number" id="Numseats" min="1" max="10" required>
+                      <br/><br/>
+                      <button onclick="takeData()">Start Selecting</button>
+                    </center>
+                    </div>
+
+
+                    <div class="seatStructure">
+                    <center>
+
+                    <table id="seatsBlock">
+                     <p id="notification"></p>
+                      <tr>
+                        <td colspan="14"><div class="screen">SCREEN</div></td>
+                        <td rowspan="20">
+                          <div class="smallBox greenBox">Selected Seat</div> <br/>
+                          <div class="smallBox redBox">Reserved Seat</div><br/>
+                          <div class="smallBox emptyBox">Empty Seat</div><br/>
+                        </td>
+
+                        <br/>
+                      </tr>
+                    <!--
+
+                    -->
+                      <tr>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td></td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    <!--
+                        <td>11</td>
+                        <td>12</td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>A</td>
+                        <td><input type="checkbox" class="seats" value="A1"></td>
+                        <td><input type="checkbox" class="seats" value="A2"></td>
+                        <td><input type="checkbox" class="seats" value="A3"></td>
+                        <td><input type="checkbox" class="seats" value="A4"></td>
+                        <td><input type="checkbox" class="seats" value="A5"></td>
+                        <td class="seatGap"></td>
+                        <td><input type="checkbox" class="seats" value="A6"></td>
+                        <td><input type="checkbox" class="seats" value="A7"></td>
+                        <td><input type="checkbox" class="seats" value="A8"></td>
+                        <td><input type="checkbox" class="seats" value="A9"></td>
+                        <td><input type="checkbox" class="seats" value="A10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="A11"></td>
+                        <td><input type="checkbox" class="seats" value="A12"></td>
+                    -->
+                      </tr>
+
+                      <tr>
+                        <td>B</td>
+                        <td><input type="checkbox" class="seats" value="B1"></td>
+                        <td><input type="checkbox" class="seats" value="B2"></td>
+                        <td><input type="checkbox" class="seats" value="B3"></td>
+                        <td><input type="checkbox" class="seats" value="B4"></td>
+                        <td><input type="checkbox" class="seats" value="B5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="B6"></td>
+                        <td><input type="checkbox" class="seats" value="B7"></td>
+                        <td><input type="checkbox" class="seats" value="B8"></td>
+                        <td><input type="checkbox" class="seats" value="B9"></td>
+                        <td><input type="checkbox" class="seats" value="B10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="B11"></td>
+                        <td><input type="checkbox" class="seats" value="B12"></td>
+                    -->
+                      </tr>
+
+                      <tr>
+                        <td>C</td>
+                        <td><input type="checkbox" class="seats" value="C1"></td>
+                        <td><input type="checkbox" class="seats" value="C2"></td>
+                        <td><input type="checkbox" class="seats" value="C3"></td>
+                        <td><input type="checkbox" class="seats" value="C4"></td>
+                        <td><input type="checkbox" class="seats" value="C5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="C6"></td>
+                        <td><input type="checkbox" class="seats" value="C7"></td>
+                        <td><input type="checkbox" class="seats" value="C8"></td>
+                        <td><input type="checkbox" class="seats" value="C9"></td>
+                        <td><input type="checkbox" class="seats" value="C10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="C11"></td>
+                        <td><input type="checkbox" class="seats" value="C12"></td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>D</td>
+                        <td><input type="checkbox" class="seats" value="D1"></td>
+                        <td><input type="checkbox" class="seats" value="D2"></td>
+                        <td><input type="checkbox" class="seats" value="D3"></td>
+                        <td><input type="checkbox" class="seats" value="D4"></td>
+                        <td><input type="checkbox" class="seats" value="D5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="D6"></td>
+                        <td><input type="checkbox" class="seats" value="D7"></td>
+                        <td><input type="checkbox" class="seats" value="D8"></td>
+                        <td><input type="checkbox" class="seats" value="D9"></td>
+                        <td><input type="checkbox" class="seats" value="D10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="D11"></td>
+                        <td><input type="checkbox" class="seats" value="D12"></td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>E</td>
+                        <td><input type="checkbox" class="seats" value="E1"></td>
+                        <td><input type="checkbox" class="seats" value="E2"></td>
+                        <td><input type="checkbox" class="seats" value="E3"></td>
+                        <td><input type="checkbox" class="seats" value="E4"></td>
+                        <td><input type="checkbox" class="seats" value="E5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="E6"></td>
+                        <td><input type="checkbox" class="seats" value="E7"></td>
+                        <td><input type="checkbox" class="seats" value="E8"></td>
+                        <td><input type="checkbox" class="seats" value="E9"></td>
+                        <td><input type="checkbox" class="seats" value="E10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="E11"></td>
+                        <td><input type="checkbox" class="seats" value="E12"></td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>F</td>
+                        <td><input type="checkbox" class="seats" value="F1"></td>
+                        <td><input type="checkbox" class="seats" value="F2"></td>
+                        <td><input type="checkbox" class="seats" value="F3"></td>
+                        <td><input type="checkbox" class="seats" value="F4"></td>
+                        <td><input type="checkbox" class="seats" value="F5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="F6"></td>
+                        <td><input type="checkbox" class="seats" value="F7"></td>
+                        <td><input type="checkbox" class="seats" value="F8"></td>
+                        <td><input type="checkbox" class="seats" value="F9"></td>
+                        <td><input type="checkbox" class="seats" value="F10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="F11"></td>
+                        <td><input type="checkbox" class="seats" value="F12"></td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>G</td>
+                        <td><input type="checkbox" class="seats" value="G1"></td>
+                        <td><input type="checkbox" class="seats" value="G2"></td>
+                        <td><input type="checkbox" class="seats" value="G3"></td>
+                        <td><input type="checkbox" class="seats" value="G4"></td>
+                        <td><input type="checkbox" class="seats" value="G5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="G6"></td>
+                        <td><input type="checkbox" class="seats" value="G7"></td>
+                        <td><input type="checkbox" class="seats" value="G8"></td>
+                        <td><input type="checkbox" class="seats" value="G9"></td>
+                        <td><input type="checkbox" class="seats" value="G10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="G11"></td>
+                        <td><input type="checkbox" class="seats" value="G12"></td>
+                    -->
+                    </tr>
+
+                    <tr class="seatVGap"></tr>
+
+                    <tr>
+                        <td>H</td>
+                        <td><input type="checkbox" class="seats" value="H1"></td>
+                        <td><input type="checkbox" class="seats" value="H2"></td>
+                        <td><input type="checkbox" class="seats" value="H3"></td>
+                        <td><input type="checkbox" class="seats" value="H4"></td>
+                        <td><input type="checkbox" class="seats" value="H5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="H6"></td>
+                        <td><input type="checkbox" class="seats" value="H7"></td>
+                        <td><input type="checkbox" class="seats" value="H8"></td>
+                        <td><input type="checkbox" class="seats" value="H9"></td>
+                        <td><input type="checkbox" class="seats" value="H10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="H11"></td>
+                        <td><input type="checkbox" class="seats" value="H12"></td>
+                    -->
+                    </tr>
+
+                    <tr>
+                        <td>I</td>
+                        <td><input type="checkbox" class="seats" value="I1"></td>
+                        <td><input type="checkbox" class="seats" value="I2"></td>
+                        <td><input type="checkbox" class="seats" value="I3"></td>
+                        <td><input type="checkbox" class="seats" value="I4"></td>
+                        <td><input type="checkbox" class="seats" value="I5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="I6"></td>
+                        <td><input type="checkbox" class="seats" value="I7"></td>
+                        <td><input type="checkbox" class="seats" value="I8"></td>
+                        <td><input type="checkbox" class="seats" value="I9"></td>
+                        <td><input type="checkbox" class="seats" value="I10"></td>
+                    <!--
+                        <td><input type="checkbox" class="seats" value="I11"></td>
+                        <td><input type="checkbox" class="seats" value="I12"></td>
+                    -->
+                    </tr>
+
+                    <!--
+                    <tr>
+                        <td>J</td>
+                        <td><input type="checkbox" class="seats" value="J1"></td>
+                        <td><input type="checkbox" class="seats" value="J2"></td>
+                        <td><input type="checkbox" class="seats" value="J3"></td>
+                        <td><input type="checkbox" class="seats" value="J4"></td>
+                        <td><input type="checkbox" class="seats" value="J5"></td>
+                        <td></td>
+                        <td><input type="checkbox" class="seats" value="J6"></td>
+                        <td><input type="checkbox" class="seats" value="J7"></td>
+                        <td><input type="checkbox" class="seats" value="J8"></td>
+                        <td><input type="checkbox" class="seats" value="J9"></td>
+                        <td><input type="checkbox" class="seats" value="J10"></td>
+                        <td><input type="checkbox" class="seats" value="J11"></td>
+                        <td><input type="checkbox" class="seats" value="J12"></td>
+                    </tr>
+                    -->
+
+
+                    </table>
+
+                    <br/>
+                        <button onclick="updateTextArea()">Confirm Selection</button>
+                        <button onclick="payments()">Payment</button>
+                    </center>
+                    </div>
+
+                    <br/><br/>
+
+                <div class="displayerBoxes">
+                    <center>
+                      <table class="Displaytable">
+                      <tr>
+                        <th>Nos.</th>
+                        <th>Seats id</th>
+                      </tr>
+                      <tr>
+                    <!--    <td><textarea id="nameDisplay"></textarea></td>-->
+                        <td><textarea id="NumberDisplay"></textarea></td>
+                        <td><textarea id="seatsDisplay"></textarea></td>
+                      </tr>
+                    </table>
+                    </center>
+                </div>
+                <!-- End of Main Content -->
+                 <div class="container-fluid">
+            <!-- <h1>Welcome to the /seats</h1> -->
+                     
+            </div>
+                
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+               <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                     <span>Copyright &copy; Bookishow 2020</span>
+                  </div>
+               </div>
+            </footer>
+            <!-- End of Footer -->
+         </div>
+         <!-- End of Content Wrapper -->
+      </div>
+      <!-- End of Page Wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+               </div>
+               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/logout">Logout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+          
+      <!-- Bootstrap core JavaScript-->
+
+      <script src="../../../../vendor/jquery/jquery.min.js"></script>
+      <script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../../../../js/city.js"></script>
+        <script src="../../../../js/seats.js"></script>
+        <script>
+            $(document).ready(function(){
+                <% 
+                    const n = bookedSeats.length;
+                    console.log("array length: "+ bookedSeats.length);
+                    console.log("bookedseats list:");
+                    if(n>0){ 
+                        for(let i=0;i<n;i++){
+                            console.log(bookedSeats[i].rid,", ",bookedSeats[i].sid);
+                        }
+                    }
+                %>
+              
+                $(".displayerBoxes *").prop("disabled", true);
+                  //  JSON.stringify(todos)  to use any ejs object in javascript file.
+                let seats = <%- JSON.stringify(bookedSeats) %>;
+                console.log("length of the returned array:",typeof(seats));
+                selectedSeats(seats);
+                //$("input:checkbox:not(:checked)").prop("disabled",true);
+                
+                
+                function selectedSeats(seats)
+                {
+                    let i=0,n=seats.length;
+                    for(i=0;i<n;i++)
+                    {
+                        //let val = $("table").find("input[value=" + seats[i].sid + "]")
+                        //input[value=" + seats[i] + "]
+//                        $("input[value=" + seats[i].sid + "]").attr("checked",true);
+                        $("input[value=" + seats[i].sid + "]").prop("disabled",true);
+                        $("input[value=" + seats[i].sid + "]").css('color','#FF0000');
+                    }
+                }
+                
+                $(":checkbox").click(function() {
+                    $("input:checked").css('color','green');
+                  if ($("input:checked").length == ($("#Numseats").val())) {
+                    $(":checkbox").prop('disabled', true);
+                    $(':checked').prop('disabled', false);
+                  }
+                  else
+                    {
+                //      $(":checkbox").prop('disabled', false);
+                        selectedSeats(seats);  
+                    }
+                });
+            });
+        </script> 
+          
+</body>
+</html>

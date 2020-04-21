@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" type="image/png" href="img/logo-icon.png">
+      <title>Signup</title>
+      <!-- Custom fonts for this template-->
+      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <!-- Custom styles for this template-->
+      <link href="css/osahan.min.css" rel="stylesheet">
+   </head>
+   <body class="bg-gradient-primary">
+      <div class="container">
+         <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+               <!-- Nested Row within Card Body -->
+               <div class="row">
+                  <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                  <div class="col-lg-7">
+                     <div class="p-5">
+                        <div class="text-center">
+                           <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+
+                        <form class="user" name="form1" action="/signup" method="POST">
+                           <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <input type="text" class="form-control form-control-user" id="Name" name="userName" placeholder="Name" required>
+                              </div>
+<!--                               <div class="col-sm-6">
+                                 <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                              </div> -->
+                           </div>
+                           <div class="form-group">
+                              <input type="email" name="email" class="form-control form-control-user" id="inputEmail" placeholder="Email Address" onblur="checkEmail()" required>
+                              <span id="message1" name="checkEmail1"></span>
+                           </div>
+
+                           <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <input type="password" name="password" class="form-control form-control-user" id="inputPassword" placeholder="Password"  minlength="8" maxlength="50" onblur="checkP()" required>
+                                 <span id="message2" name="checkPass"></span>
+                              </div>
+
+                              <div class="col-sm-6">
+                                 <input type="password" name="Password1" class="form-control form-control-user" id="confirmPassword" placeholder="Confirm Password" onblur="checkP()" required>
+                                 <span id="message3" name="matchPass"></span>
+                              </div>
+
+                           </div>
+                           <div class="form-group">
+                              <input type="text" name="addr" class="form-control form-control-user" id="addr" placeholder="address" size="200" required>
+                           </div>
+
+                           <div class="form-group">
+                              <input type="date"  class="form-control form-control-user" id="dob" name="dob" placeholder="date of Birth" required>
+                           </div>
+
+                           <div class="form-group">
+                              <input type="text" name="aadhar_id" class="form-control form-control-user" id="aadhar_id" placeholder="aadhar_id" size="12" minlength="12" maxlength="12">
+                           </div>
+                            <%
+                                if(message!=null && message.length>0){
+                            %>
+                            <span id="aadharmsg" name="checkAadhar" style="color:red"><%= message %></span>
+                           <% 
+                            } 
+                            %>
+                            <hr>
+                            <div class="form-group">
+                              <input type="text" name="contact" class="form-control form-control-user" id="contact" placeholder="contact number" size="10" required>
+                           </div>
+
+                           <button id="btn-login" type="submit" class="btn btn-primary btn-user btn-block">Signup </button>
+                           <hr>
+
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                           <a class="small" href="/forgotPassword">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                           <a class="small" href="/login">Already have an account? Login!</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Bootstrap core JavaScript-->
+      <script>
+
+         //var email_regex  = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+         // var password_regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
+
+         function checkP(){
+
+            var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+            var passwordIn = document.getElementById("inputPassword").value;
+
+            if(!password_regex.test(passwordIn))
+            {
+               document.getElementById('message2').innerHTML = "invalid password!";
+               document.getElementById("btn-login").disabled = true;
+               //document.form1.password.focus();
+            } else {
+               document.getElementById('message2').innerHTML = "";
+               document.getElementById("btn-login").disabled = false;
+            }
+            var password = document.getElementById('inputPassword').value;
+            var Password1 = document.getElementById('confirmPassword').value;
+            if(password!=(Password1))
+            {
+               document.getElementById('message3').style.color = 'red';
+               document.getElementById('message3').innerHTML = 'not matching!!';
+            } else {
+               document.getElementById('message3').style.color = 'green';
+               document.getElementById('message3').innerHTML = 'Its matching!!';
+            }
+         }
+
+         function checkEmail(){
+            var email_regex  = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var inputEmail1 = document.getElementById("inputEmail").value;
+            if(!email_regex.test(inputEmail1))
+            {
+               document.getElementById('message1').innerHTML = "invalid Email!";
+               document.getElementById("btn-login").disabled = true;
+               // document.form1.email.focus();
+            } else {
+               document.getElementById('message1').innerHTML = "";
+               document.getElementById("btn-login").disabled = false;
+            }
+         }
+
+      </script>
+
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Custom scripts for all pages-->
+      <!-- <script src="js/osahan.min.js"></script> -->
+</body>
+</html>
