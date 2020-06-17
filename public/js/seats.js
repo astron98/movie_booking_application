@@ -7,7 +7,7 @@
 //    console.log("length of the returned array:",typeof(seats));
 //    selectedSeats(seats);
 //    //$("input:unchecked").prop("disabled",true);
-//    
+//
 //}
 //
 //function selectedSeats(seats)
@@ -25,7 +25,7 @@
 function takeData()
 {
 //  if (( $("#Username").val().length == 0 ) || ( $("#Numseats").val().length == 0 ))
-   if ( $("#Numseats").val().length == 0 )
+   if ( $("#Numseats").val().length <= 0)
   {
   	alert("Please Enter Number of Seats");
   }
@@ -35,37 +35,46 @@ function takeData()
        //$("input:checkbox:not(:checked)").prop("disabled",false);
 //    $(".inputForm *").prop("disabled", true);
     //$(".seatStructure *").prop("disabled", false);
-    document.getElementById("notification").innerHTML = "<b style='margin-bottom:0px;background:white;'>Please Select your Seats NOW!</b>";
+    document.getElementById("notification").innerHTML = "<b style='margin-bottom:0px;background:white;color:green'>Please Select your Seats NOW!</b>";
+
   }
 }
-
+let seatDetails={};
 
 function updateTextArea() {
-    
+  let price  = $('#seat-type option:selected').val();
   if ($("input:checked").length == ($("#Numseats").val()))
     {
       // $(".seatStructure *").prop("disabled", true);
-      
+
 //     var allNameVals = [];
-     var allNumberVals = [];
-     var allSeatsVals = [];
-  
+     let allNumberVals = [];
+     let allSeatsVals = [];
+
      //Storing in Array
 //     allNameVals.push($("#Username").val());
      allNumberVals.push($("#Numseats").val());
      $('#seatsBlock :checked').each(function() {
        allSeatsVals.push($(this).val());
      });
-    
-     //Displaying 
+
+     //Displaying
 //     $('#nameDisplay').val(allNameVals);
      $('#NumberDisplay').val(allNumberVals);
      $('#seatsDisplay').val(allSeatsVals);
+      seatDetails = {
+      seats: allSeatsVals,
+      seatType: ($('#seat-type option:selected').text()).includes("gold")? "gold" :"platinum",
+      seatPrice: price
+     };
+     console.log(seatDetails);
+     $.post('/seatDetails',{seatDetails:seatDetails});  //saving all the 'seatDetails' in the redis-session.
     }
   else
     {
       alert("Please select " + ($("#Numseats").val()) + " seats")
     }
+
   }
 
 
@@ -99,14 +108,11 @@ function getCookie(cname) {
 //  else
 //    {
 ////      $(":checkbox").prop('disabled', false);
-//        selectedSeats(seats);  
+//        selectedSeats(seats);
 //    }
 //});
 
 function payments(){
-    e.preventDefault();
-    window.location = "/payments"
+    // e.preventDefault();
+    window.location = "/payments";
 }
-
-
-

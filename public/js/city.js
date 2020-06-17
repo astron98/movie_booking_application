@@ -11,7 +11,7 @@ let s = $("#city-button");
             console.log(data[i].city);
         $('#city-button').append(new Option(data[i].city, data[i].city));
         }
-        $('#city-button').val(data[data.length-1]); //setting the 'city value' to the one present in our current session.   
+        $('#city-button').val(data[data.length-1]); //setting the 'city value' to the one present in our current session.
     });
 
     // let seat = /seat-booking\/[\d]+-[\d]+/;
@@ -24,7 +24,7 @@ let s = $("#city-button");
    //          // $(seat).prop( "disabled", false );
    //      }
    // });
-    
+
    // if(s.val().length<=0){
    //          // return false;
    //          $("#seat-booking-time:a").prop( "disabled", true );
@@ -41,10 +41,10 @@ $("#city-button").on('change', function() {
         async function updateCity(city){
 //        window.alert(this.value );
         await $.post("/changeCity",{city: city});
-            
+
         $('#city-button').val(city);
         //location.reload(true);
         }
-        
+
     }
 });

@@ -87,9 +87,32 @@ textarea
 input[type=checkbox] {
     width:0px;
     margin-right:18px;
+    /*visibility: hidden;*/
+}
+/* Hide the browser's default checkbox */
+.seats input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-input[type=checkbox]:before {
+input[type=checkbox] {
+    content: "";
+    /*position: absolute;*/
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align:middle;
+    text-align: center;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    background-color:lightblue;
+}
+
+
+
+./*gold input[type=checkbox]:before {
     content: "";
     width: 15px;
     height: 15px;
@@ -98,11 +121,11 @@ input[type=checkbox]:before {
     text-align: center;
     box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
     background-color:#ccc;
-}
+}*/
 
-input[type=checkbox]:checked:before {
+/*input[type=checkbox]:checked:before {
     background-color:Green;
     font-size: 15px;
-}
+}*/
 
 

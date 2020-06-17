@@ -36,49 +36,13 @@
                    <i class="fas fa-fw fa-film"></i>
                    <span>Movies</span></a>
                 </li>
-<!--
-                <li class="nav-item">
-                   <a class="nav-link" href="events.html">
-                   <i class="fas fa-fw fa-glass-cheers"></i>
-                   <span>Events</span></a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="people.html">
-                   <i class="fas fa-fw fa-users"></i>
-                   <span>People</span></a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="sports.html">
-                   <i class="fas fa-fw fa-futbol"></i>
-                   <span>Sports</span></a>
-                </li>
--->
+                
                 <!-- Divider -->
                 <hr class="sidebar-divider">
                 <!-- Heading -->
                 <div class="sidebar-heading">Extra</div>
                 <!-- Nav Item - Pages Collapse Menu -->
-<!--
-                <li class="nav-item">
-                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                   <i class="fas fa-fw fa-pager"></i>
-                   <span>Pages</span>
-                   </a>
-                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                      <div class="bg-white py-2 collapse-inner rounded">
-                         <h6 class="collapse-header">All Pages</h6>
-                         <a class="collapse-item" href="/movies">Movies</a>
-                         <a class="collapse-item" href="movies-detail.html">Movie Detail</a>
-                         <a class="collapse-item" href="events.html">Events</a>
-                         <a class="collapse-item" href="events-detail.html">Event Detail</a>
-                         <a class="collapse-item" href="people.html">People</a>
-                         <a class="collapse-item" href="people-detail.html">People Detail</a>
-                         <a class="collapse-item" href="sports.html">Sports</a>
-                         <a class="collapse-item" href="sports-detail.html">Sport Detail</a>
-                      </div>
-                   </div>
-                </li>
--->
+                
                 <li class="nav-item">
                    <a class="nav-link" href="../../../../offers.html">
                    <i class="fas fa-fw fa-fire"></i>
@@ -215,6 +179,10 @@
                     <center>
                     <!--  Name *: <input type="text" id="Username" required>-->
                       Number of Seats *: <input type="number" id="Numseats" min="1" max="10" required>
+                      <select id="seat-type">
+                        <!-- <option value="gold">Gold</option>
+                        <option value="platinum">Platinum</option> -->
+                      </select>
                       <br/><br/>
                       <button onclick="takeData()">Start Selecting</button>
                     </center>
@@ -257,7 +225,7 @@
                         <td>12</td>
                     -->
                     </tr>
-
+                    <div class="gold">
                     <tr>
                         <td>A</td>
                         <td><input type="checkbox" class="seats" value="A1"></td>
@@ -390,22 +358,22 @@
                         <td><input type="checkbox" class="seats" value="G12"></td>
                     -->
                     </tr>
-
+                  </div>
                     <tr class="seatVGap"></tr>
-
+                  <div class="platinum">
                     <tr>
                         <td>H</td>
-                        <td><input type="checkbox" class="seats" value="H1"></td>
-                        <td><input type="checkbox" class="seats" value="H2"></td>
-                        <td><input type="checkbox" class="seats" value="H3"></td>
-                        <td><input type="checkbox" class="seats" value="H4"></td>
-                        <td><input type="checkbox" class="seats" value="H5"></td>
+                        <td><input type="checkbox" class="seats1" value="H1"></td>
+                        <td><input type="checkbox" class="seats1" value="H2"></td>
+                        <td><input type="checkbox" class="seats1" value="H3"></td>
+                        <td><input type="checkbox" class="seats1" value="H4"></td>
+                        <td><input type="checkbox" class="seats1" value="H5"></td>
                         <td></td>
-                        <td><input type="checkbox" class="seats" value="H6"></td>
-                        <td><input type="checkbox" class="seats" value="H7"></td>
-                        <td><input type="checkbox" class="seats" value="H8"></td>
-                        <td><input type="checkbox" class="seats" value="H9"></td>
-                        <td><input type="checkbox" class="seats" value="H10"></td>
+                        <td><input type="checkbox" class="seats1" value="H6"></td>
+                        <td><input type="checkbox" class="seats1" value="H7"></td>
+                        <td><input type="checkbox" class="seats1" value="H8"></td>
+                        <td><input type="checkbox" class="seats1" value="H9"></td>
+                        <td><input type="checkbox" class="seats1" value="H10"></td>
                     <!--
                         <td><input type="checkbox" class="seats" value="H11"></td>
                         <td><input type="checkbox" class="seats" value="H12"></td>
@@ -414,23 +382,23 @@
 
                     <tr>
                         <td>I</td>
-                        <td><input type="checkbox" class="seats" value="I1"></td>
-                        <td><input type="checkbox" class="seats" value="I2"></td>
-                        <td><input type="checkbox" class="seats" value="I3"></td>
-                        <td><input type="checkbox" class="seats" value="I4"></td>
-                        <td><input type="checkbox" class="seats" value="I5"></td>
+                        <td><input type="checkbox" class="seats1" value="I1"></td>
+                        <td><input type="checkbox" class="seats1" value="I2"></td>
+                        <td><input type="checkbox" class="seats1" value="I3"></td>
+                        <td><input type="checkbox" class="seats1" value="I4"></td>
+                        <td><input type="checkbox" class="seats1" value="I5"></td>
                         <td></td>
-                        <td><input type="checkbox" class="seats" value="I6"></td>
-                        <td><input type="checkbox" class="seats" value="I7"></td>
-                        <td><input type="checkbox" class="seats" value="I8"></td>
-                        <td><input type="checkbox" class="seats" value="I9"></td>
-                        <td><input type="checkbox" class="seats" value="I10"></td>
+                        <td><input type="checkbox" class="seats1" value="I6"></td>
+                        <td><input type="checkbox" class="seats1" value="I7"></td>
+                        <td><input type="checkbox" class="seats1" value="I8"></td>
+                        <td><input type="checkbox" class="seats1" value="I9"></td>
+                        <td><input type="checkbox" class="seats1" value="I10"></td>
                     <!--
                         <td><input type="checkbox" class="seats" value="I11"></td>
                         <td><input type="checkbox" class="seats" value="I12"></td>
                     -->
                     </tr>
-
+                  </div>
                     <!--
                     <tr>
                         <td>J</td>
@@ -543,7 +511,8 @@
                   //  JSON.stringify(todos)  to use any ejs object in javascript file.
                 let seats = <%- JSON.stringify(bookedSeats) %>;
                 console.log("length of the returned array:",typeof(seats));
-                selectedSeats(seats);
+
+                selectedSeats(seats);   //calling the function.
                 //$("input:checkbox:not(:checked)").prop("disabled",true);
                 
                 
@@ -556,22 +525,46 @@
                         //input[value=" + seats[i] + "]
 //                        $("input[value=" + seats[i].sid + "]").attr("checked",true);
                         $("input[value=" + seats[i].sid + "]").prop("disabled",true);
+                        $("input[value=" + seats[i].sid + "]").addClass("selected");
+
                         $("input[value=" + seats[i].sid + "]").css('color','#FF0000');
                     }
                 }
+
+                $.get("/seatPrices",function(data){
+                    for (var i=0;i<data.length;i++) {
+                        console.log(data[i]);
+                        $('#seat-type').append(new Option("gold "+data[i].gold_price+"Rs", data[i].gold_price));
+                        $('#seat-type').append(new Option("platinum "+data[i].plat_price+"Rs", data[i].plat_price));
+                    }
+                });
                 
-                $(":checkbox").click(function() {
-                    $("input:checked").css('color','green');
+                $("input:checkbox").click(function() {
+                    $("input:checked").css('background','green');
                   if ($("input:checked").length == ($("#Numseats").val())) {
                     $(":checkbox").prop('disabled', true);
                     $(':checked').prop('disabled', false);
                   }
                   else
-                    {
-                //      $(":checkbox").prop('disabled', false);
-                        selectedSeats(seats);  
+                  {
+                    //$(":checkbox").prop('disabled', false);
+                    selectedSeats(seats);  
+                  }
+                });
+
+                $("#seat-type").on("click",function(){
+                    if(($('#seat-type option:selected').text()).includes("gold")){
+                      $('input:checkbox[class=seats1]').prop('disabled',true);
+                      $('input:checkbox[class=seats]').prop('disabled',false);
+                      console.log("platinum boxes disabled.");
+                    }
+                    else{
+                      $('input:checkbox[class=seats]').prop('disabled',true);
+                      $('input:checkbox[class=seats1]').prop('disabled',false);
+                      console.log("gold boxes disabled.");
                     }
                 });
+
             });
         </script> 
           

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 exports.aadhar = function(aadharid){
     
     
@@ -20,7 +22,7 @@ exports.aadhar = function(aadharid){
 
         req.headers({
             "x-rapidapi-host": "aadhaarnumber-verify.p.rapidapi.com",
-            "x-rapidapi-key": "d751be346amsh490b24b3e7cf760p18939fjsn425fabb401d6",
+            "x-rapidapi-key": process.env.RAPID_API_KEY,
             "content-type": "application/x-www-form-urlencoded"
         });
 
@@ -29,7 +31,7 @@ exports.aadhar = function(aadharid){
         const aadhar_results = {};
         req.end(function (res) {
             if (res.error){
-                throw new Error(res.error);
+                //throw new Error(res.error);
                 reject(res.error);
             } 
             console.log(res.body);

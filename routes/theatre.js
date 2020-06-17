@@ -1,10 +1,25 @@
 exports.getTheatres = function(req,res){
 //    let date_format = "DATE_FORMAT(release_date,"%Y-%m-%d")";
     let _mid = req.params._mid;
+    connection.query('select title from movies where _mid = ?',[_mid],(err,rows)=>{
+        try{
+//            console.log("current movie name:",rows[0].title);
+            req.session.mname = rows[0].title;
+            req.session.save(function(error){
+                if(!error){
+                    console.log("current movie name:",rows[0].title);
+                }
+                else
+                    console.log(error,"\n");
+            });
+        } catch(err){
+            console.log(err);
+        }
+    });
     console.log("session: ",JSON.stringify(req.session))
     let city = req.session.city;
     console.log("_mid: "+_mid,", city:",city);
-    if(city===""){
+    if(city==""){
         res.redirect("back");
     }
    const rows={};

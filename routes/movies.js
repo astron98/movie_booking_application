@@ -34,6 +34,9 @@ exports.getCity = function(req,res){
             console.log("printing all the current and selected cities...\n",rows,"\n\n")
             res.json(rows);
         } 
+        else{
+            console.log(err);
+        }
     });
 };
 

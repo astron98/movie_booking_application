@@ -2,9 +2,11 @@ const user = require('./routes/login.js');
 const movies = require('./routes/movies.js');
 const theatre = require('./routes/theatre.js');
 const seatBooking = require('./routes/seatBooking.js');
-
+const paymentConfig = require('./routes/paymentConfig.js');
+const otp = require('./routes/otp.js')
 
 const express = require('express');
+require('dotenv').config()		//configure the env-variables
 const helmet = require('helmet');
 const app = express();
 const mysql = require('mysql');
@@ -32,9 +34,9 @@ app.use(helmet.noSniff());
 
 // --------------------- Database Connection--------
 var connection = mysql.createConnection({
-	host : 'localhost',
-	user : 'root',
-	password : 'qwerty1234',
+	host : process.env.DB_HOST,
+	user : process.env.DB_USER,
+	password : process.env.DB_PASS,
 	database : 'booking_movies'
 });
 module.exports = connection;
@@ -60,7 +62,13 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 //---------- login-session---------------------
 app.use(session({
-	secret: 'csest_la_vie_asdfjl34qw',
+	secret: process.env.REDIS_SECRET_KEY,
+	cookie: {
+		httpOnly:true,
+		secure:false,
+		sameSite:true,
+		maxAge: 86400000
+	},
 	store: new redisStore({
 		host:'localhost',
 		port: 6379,
@@ -68,12 +76,12 @@ app.use(session({
 		ttl: 86400
 	}),
 	resave: false,
-	saveUninitialized: true
-	
+	saveUninitialized: false
 }));
 
 function authChecker(req, res, next) {
-    console.log("checking the authentication.....")
+    console.log("checking the authentication.....\n session-id:",req.session.id);
+
     if (req.session.loggedin) {
         next();
     } else {
@@ -82,16 +90,23 @@ function authChecker(req, res, next) {
 }
 
 
+app.get('/template',(req,res,err)=>{
+		res.render('template.ejs');
+});
 app.get('/login',user.login);
 app.post('/login',user.loginPost);
+
+app.get('/signup',user.signup);
+app.post('/signup',user.signupPost);
+// app.get('/verify',(req,res)=>{
+// 	res.render("verify.ejs",{msg:""});
+// });
+app.post('/verify',otp.verifyOtp);
 
 //checking for the authentication before loading the data from any of the below routes.
 app.use(authChecker);
 //-------------end-----------------------------
 
-
-app.get('/signup',user.signup);
-app.post('/signup',user.signupPost);
 app.get('/logout',user.logout); //call for logout
 
 //movies page.
@@ -114,13 +129,18 @@ app.post("/changeCity",(req,res)=>{
       });
 });
 
+app.get('/seatPrices',seatBooking.seatPrices);
+app.post('/seatDetails',seatBooking.seatDetails);
 
+app.get('/payments',paymentConfig.getPayment);
+app.post('/payments',paymentConfig.postPayment);
 
-//temporary /movies route (for testing)
-//app.get('/movies',(req,res)=>{
-//    res.render('movies');
-//});
-
+app.get('/tickets',(req,res,err)=>{
+    console.log("booked=Details:  in the /tickets route... ",JSON.stringify(paymentConfig.bd));
+//	let data = JSON.parse(JSON.stringify(paymentConfig.bd));
+    
+    res.render('template.ejs',{data:paymentConfig.bd});
+});
 
 /* route for the homepage. */
 app.get('/home',(req,res,err)=>{
@@ -129,7 +149,7 @@ app.get('/home',(req,res,err)=>{
 	// 	console.log("ERROR in GET (/home): \n",err);
 	// 	res.redirect('error.ejs');
 	// } else {
-	console.log("session details: \n"+JSON.stringify(req.session));	
+	console.log("session details: \n"+JSON.stringify(req.session));
 	if(req.session.loggedin)
 		res.render('homepage.ejs',{message:"Welcome, Back "+ req.session.name+"!\n"});
 	else
@@ -218,8 +238,8 @@ app.post('/password_reset',(req,res)=>{
 });
 
 
-/* code for starting the server at port=3000. */ 
-const port = 3000;
+/* code for starting the server at port=3000. */
+const port = process.env.SERVER_PORT;
 app.listen(port,()=>{
 	console.log(`Server started on port ${port}! \n`);
 });

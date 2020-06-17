@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/logo-icon.png">
+    <title>Payments</title>
+    <!-- Slick Slider -->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/osahan.min.css" rel="stylesheet">
+
+    <!-- payment.css - CSS file for the payments.html/.ejs -->
+    <link rel='stylesheet' type='text/css' media='screen' href='css/payments.css'>
+</head>
+   <body id="page-top">
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+         <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+                   <div class="sidebar-brand-icon">
+                      <img src="../img/logo-icon.png" alt="">
+                   </div>
+                   <div class="sidebar-brand-text mx-3"><img src="../img/logo.png" alt=""></div>
+                </a>
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                   <a class="nav-link" href="/movies">
+                   <i class="fas fa-fw fa-film"></i>
+                   <span>Movies</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <!-- Heading -->
+
+                <li class="nav-item">
+                   <a class="nav-link" href="offers.html">
+                   <i class="fas fa-fw fa-fire"></i>
+                   <span>Offers</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                   <i class="fas fa-fw fa-clone"></i>
+                   <span>Extra Pages</span>
+                   </a>
+                   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                      <div class="bg-white py-2 collapse-inner rounded">
+                         <h6 class="collapse-header">Login Screens:</h6>
+                         <a class="collapse-item" href="/login">Login</a>
+                         <a class="collapse-item" href="/signup">Register</a>
+<!--                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
+<!--                         <div class="collapse-divider"></div>-->
+<!--                         <h6 class="collapse-header">Other Pages:</h6>-->
+<!--                         <a class="collapse-item" href="404.html">404 Page</a>-->
+<!--                         <a class="collapse-item" href="blank.html">Blank Page</a>-->
+                      </div>
+                   </div>
+                </li>
+    </ul>
+         <!-- End of Sidebar -->
+         <!-- Content Wrapper -->
+         <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+               <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-dark topbar mb-4 pl-0 static-top shadow">
+                  <!-- Sidebar Toggle (Topbar) -->
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                  <i class="fa fa-bars"></i>
+                  </button>
+                  <!-- Topbar Search -->
+                  <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
+                     <div class="input-group">
+                        <input type="text" class="form-control bg-white border-0 small" placeholder="Search for Movies, Events, Plays, Sports and Activities..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                           <button class="btn bg-white" type="button">
+                           <i class="fas fa-search fa-sm"></i>
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+                  <!-- Topbar Navbar -->
+                  <ul class="navbar-nav ml-auto">
+                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                     <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                           <form class="form-inline mr-auto w-100 navbar-search">
+                              <div class="input-group">
+                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                 <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </li>
+
+                      <!-- ----------------------------------  City Selection ----------------------------------------------- -->
+                      <!-- Example single danger button -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <select class="form-control ml-3" name="city" id="city-button" required>
+                            <option value=""></option>
+                        </select>
+                    </li>
+
+                     <!-- Nav Item - Alerts -->
+                     <li class="nav-item no-arrow mx-1">
+                        <a class="nav-link" href="offers.html">
+                           <i class="fas fa-fire fa-fw"></i>
+                           <!-- Counter - Alerts -->
+                           <span class="badge badge-danger bg-gradient-danger">NEW</span>
+                        </a>
+                     </li>
+
+                     <!-- Nav Item - User Information -->
+                     <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Profile</span>
+                        <img class="img-profile rounded-circle" src="../img/s4.png">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Profile
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-heart fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Watchlist
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-list-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Your Lists
+                           </a>
+                           <a class="dropdown-item" href="/profile">
+                           <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Account Settings
+                           </a>
+                           <div class="dropdown-divider"></div>
+                           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                           Logout
+                           </a>
+                        </div>
+                     </li>
+                  </ul>
+</nav>
+               <!-- End of Topbar -->
+                <!-- ~`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~- -->
+                <!-- Begin Page Content (payment gateway.) -->
+                <div class="container-fluid">
+                           <div class="panel panel-default credit-card-box">
+                                  <div class="panel-heading display-table">
+                                      <div class="row display-tr">
+                                          <h3 class="panel-title display-td">Payment Details</h3>
+                                          <div class="display-td">
+                                              <img class="img-responsive pull-right" src="img/accepted_c22e0.png">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="panel-body">
+                                      <form role="form" id="payment-form" onsubmit="return checkForm()" action="/payments" method="POST">
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <div class="form-groups">
+                                                      <h4>Pay the total of <span class="badge badge-warning"><%= totalAmount%>&#x20b9;</span> through:</h4>
+                                                      <label for="wallet">
+                                                          <input type="radio" id="wallet" name="payment" value="wallet">
+                                                          Wallet(<strong id="walletBal"> <%= wallet[0].wallet %></strong>&#x20b9;)
+                                                          <span id="wallet-err" style="color: red;"></span>
+                                                      </label>
+                                                      <label for="cards">
+                                                          <input type="radio" id="cards" name="payment" value="cards"> Cards
+                                                      </label>
+                                                      <label id="partialBill1" for="partialBill">
+                                                        <input type="checkbox" id="partialBill" name="partialBilling" value="allow" checked>
+                                                        Allow partial Billing.
+                                                      </label>
+                                                      <br>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                         <div id="cardOptions">
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <div class="form-group">
+                                                      <label for="cardNumber">Saved Cards</label>
+                                                      <div class="savedCards input-group">
+                                                          <select class="form-control" id="savedCards" name="savedCards">
+                                                              <!-- <option value="1">456789011234</option> -->
+                                                              <!-- <option value="2">456789011234</option> -->
+                                                              <option value="-1">add Card</option>
+                                                          </select>
+                                                          <!-- <label for="cardNumber">Bal.</label> -->
+                                                          <button type="button" class="btn btn-outline-info cardAmount" id="cardAmount">xxxx&#x20b9;</button>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <div class="form-group">
+                                                      <label for="cardNumber">CARD NUMBER</label>
+                                                      <div class="input-group">
+                                                          <input type="number" class="form-control" name="cardNumber" placeholder="12 Digit Card Number" autocomplete="cc-number" pattern="[0-9]{12}" required autofocus>
+                                                          <span id="card-err" style="color: red;"></span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-xs-7 col-md-7">
+                                                  <div class="form-group">
+                                                      <label for="cardExpiry"><span class="hidden-xs">MONTH</span></label>
+                                                      <input type="number" class="form-control" name="expiryMonth" placeholder="MM" autocomplete="cc-exp" min="1" max="12" required>
+                                                      <label for="cardExpiry"><span class="hidden-xs">YEAR</span></label>
+                                                      <input type="number" class="form-control" name="expiryYear" placeholder="YYYY" autocomplete="cc-exp" min="2021" max="2026" required>
+                                                  </div>
+                                              </div>
+                                              <div class="col-xs-5 col-md-5 pull-right">
+                                                  <div class="form-group">
+                                                      <label for="cardCVC">CVV CODE</label>
+                                                      <input type="password" class="form-control" name="cardCVV" placeholder="CVV" pattern="[0-9]{3}" autocomplete="new-password" required>
+                                                      <span id="cvv-err" style="color: red; background:pink;"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <div class="form-group">
+                                                      <label for="promocode">PROMOCODE</label>
+                                                      <input type="text" class="form-control" id="promocode" name="promocode" autofocus>
+                                                      <span id="promocode-err" style="color: red;"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-xs-12">
+                                                  <input class="btn btn-success btn-lg btn-block"  value="Pay" type="submit">
+                                              </div>
+                                          </div>
+                                          <!-- <div class="row" style="display:none;">
+                                              <div class="col-xs-12">
+                                                  <p class="payment-errors"></p>
+                                              </div>
+                                          </div> -->
+                                      </form>
+                                  </div>
+                           </div>
+                </div>
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`` -->
+            <!-- End of Main Content -->
+
+         <!-- End of Content Wrapper -->
+      </div>
+      <!-- End of Page Wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+               </div>
+               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/logout">Logout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Bootstrap core JavaScript-->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="js/city.js"></script>
+      <script type="text/javascript" src="js/payments.js"></script>
+      <script>
+          let cards =  <%- (JSON.stringify(savedCards.savedCards)) %>;
+          let promocode = <%- (JSON.stringify(promocodes.promocodes)) %>;
+
+          $(document).ready(function(){
+            let   today = new Date(),
+                  curMonth = today.getMonth(),
+                  curYear = today.getFullYear(),
+                  totalAmount = <%- totalAmount %>,
+                  partialBill = $('#partialBill');
+
+
+            // console.log(cards,"\n",promocode)
+            const n = cards.length;
+
+            if(n==0)
+                $('#savedCards option[value="-1"]').attr("selected","selected");
+
+            for(let i=0;i<n;i++){
+                // console.log(cards[i]);
+                if((cards[i].year== curYear && cards[i].month<=curMonth) || (cards[i].year> curYear)){
+                    $('#savedCards').append(new Option(cards[i].cardNo,i));
+                }
+                else{
+                    $('#savedCards').append(new Option("expired-"+cards[i].cardNo,i));
+                    $(`#savedCards option[value=${i}]`).attr("disabled","disabled");
+                }
+            }
+
+            $('#savedCards').on('change',function(){
+                let currentCard = $(this).val();
+                if(currentCard=="-1"){
+                    // $("#cardOptions input").trigger("reset");
+                    $('#cardOptions input').each(function(){
+                        $(this).val('');
+                    });
+                    $('#cardAmount').html("xxxx&#x20b9;");
+                    return false;
+                }
+                else
+                {
+                    $('#cardAmount').html(cards[currentCard].balance+"&#x20b9;");
+                    $('input[name="cardNumber"]').val(cards[currentCard].cardNo);
+                    $('input[name="expiryMonth"]').val(cards[currentCard].month);
+                    $('input[name="expiryYear"]').val(cards[currentCard].year);
+                }
+            });
+
+            //check the PROMOCODE
+            const promoID = document.getElementById("promocode-err");
+            function checkPromocode(inputVal){
+                console.log("inputVal:",inputVal);
+
+                let flag=0;
+                for(let i=0;i<promocode.length;i++){
+                  console.log(promocode[i].promocode);
+                  if(inputVal==promocode[i].promocode){
+                      flag=1;
+                      break;
+                  }
+                }
+                if(flag==0)
+                    promoID.innerHTML = "Invalid code.";
+                else
+                    promoID.innerHTML = "";
+
+            }
+
+            $('input[name="promocode"]').keyup(function(){
+                setTimeout(checkPromocode,1000,$(this).val());
+            });
+          });
+
+          //form validation
+          function checkForm(){
+            let mode = ($('input[name="payment"]:checked').val()=="cards")? "cards":"wallet";
+            let walletBal = <%- wallet[0].wallet %>,
+                cardBal = cards[$('#savedCards').val()].balance;
+            //Storing the CVV code for validation.
+            let cvv = $('input[name="cardCVV"]').val();
+            console.log("cvv value:",cvv);
+
+            //"A new card will always be verified in the backend, so we return the function".
+            if($('#savedCards').val()=="-1")    //Check if the current selected card is a "new card"
+                return true;
+
+            //checking the CVV code.
+            if(cvv != cards[$('#savedCards').val()].cvv){
+                $('#cvv-err').val("incorrect cvv!");
+                return false;
+            }
+            else {
+                $('#cvv-err').val("");
+            }
+
+            /*
+                Validating the selected wallet or card.
+            */
+            if(mode=="wallet"){
+                if(totalAmount > walletBal && $('#partialBill').prop("checked")==false){
+                    $('#wallet-err').val("low wallet-balance.");
+                    $('wallet').focus();
+                    return false;
+                }
+                else{
+                    $('#wallet-err').val("");
+                    return true;
+                }
+
+            }
+            else if(mode=="cards"){
+                if($('#savedCards').val()!="-1" && totalAmount > cardBal){
+                    $('#card-err').val("low card-balance.");
+                    $('input[name="cardNumber"]')
+                      .css("border","2px solid pink")
+                      .focus();
+                    return false;
+                }
+                else{
+                      $('#card-err').val("");
+                      return true;
+                }
+            }
+
+          }
+
+
+      </script>
+
+</body>
+</html>
