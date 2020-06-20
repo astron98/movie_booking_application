@@ -3,7 +3,8 @@ const movies = require('./routes/movies.js');
 const theatre = require('./routes/theatre.js');
 const seatBooking = require('./routes/seatBooking.js');
 const paymentConfig = require('./routes/paymentConfig.js');
-const otp = require('./routes/otp.js')
+const otp = require('./routes/otp.js');
+const bookedHistory = require('./routes/bookingHistory.js');
 
 const express = require('express');
 require('dotenv').config()		//configure the env-variables
@@ -141,6 +142,8 @@ app.get('/tickets',(req,res,err)=>{
     
     res.render('template.ejs',{data:paymentConfig.bd});
 });
+
+app.get('/bookedHistory',bookedHistory.bookedHistory);
 
 /* route for the homepage. */
 app.get('/home',(req,res,err)=>{
