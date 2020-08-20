@@ -9,7 +9,7 @@
   "author": "\"astron98\"",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.8",
+    "bcrypt": "^5.0.0",
     "connect-redis": "^4.0.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
