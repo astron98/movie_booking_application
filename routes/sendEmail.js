@@ -1,9 +1,10 @@
-require('dotenv').config()
+require('dotenv').config();
+const nodeMailer = require('nodemailer');
 
 function sendEmail(email){
     return new Promise((resolve,reject)=>{
         
-        const nodeMailer = require('nodemailer');
+        
 
         //-------------------------nodeMailer-------------------------
         const transporter = nodeMailer.createTransport({
@@ -17,11 +18,10 @@ function sendEmail(email){
         });
         
         let mailOptions = {
-          from: process.env.EMAIL_ID, // sender address
-                to: email.emailList, // list of receivers
-                subject: email.subject, // Subject line
-//                text: text, // plain text body
-                html: email.body // html body
+            from: process.env.EMAIL_ID, // sender emailID
+            to: email.emailList,        // list of receiving email-IDs
+            subject: email.subject,     // Subject line
+            html: email.body            // html body
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -29,9 +29,8 @@ function sendEmail(email){
                       reject(error);
                   }
                   else{
-                  console.log('Message %s sent: %s', info.messageId, info.response);
-                  resolve(info);
-                     // res.render('index');
+                    console.log('Message %s sent: %s', info.messageId, info.response);
+                    resolve(info);
                   }
                   });
             });

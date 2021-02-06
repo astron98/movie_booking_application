@@ -10,8 +10,6 @@
   "author": "\"astron98\"",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "bcrypt": "^3.0.8",
     "concurrently": "^5.2.0",
     "connect-redis": "^4.0.4",
     "dotenv": "^8.2.0",

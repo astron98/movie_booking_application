@@ -376,8 +376,8 @@
           //form validation
           function checkForm(){
             let mode = ($('input[name="payment"]:checked').val()=="cards")? "cards":"wallet";
-            let walletBal = <%- wallet[0].wallet %>,
-                cardBal = cards[$('#savedCards').val()].balance;
+            let walletBal = <%- wallet[0].wallet %>;
+            let cardBal = ($('#savedCards').val()==null)? 0 : cards[$('#savedCards').val()].balance;
             //Storing the CVV code for validation.
             let cvv = $('input[name="cardCVV"]').val();
             console.log("cvv value:",cvv);

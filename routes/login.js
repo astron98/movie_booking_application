@@ -1,8 +1,10 @@
 const aadhar_f = require('./aadhar.js');
 const sendEmail = require('./sendEmail.js');
 const otp = require('./otp.js');
-const axios = require('axios');
-axios.defaults.baseURL = "http://localhost:3000";
+
+// const axios = require('axios');
+// axios.defaults.baseURL = "http://localhost:3000";
+
 exports.signupPost = function(req,res,next){
 	// var email_regex  = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
 	// var password_regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
@@ -16,70 +18,55 @@ exports.signupPost = function(req,res,next){
 			aadhar_id: req.body.aadhar_id,
 			contact: req.body.contact
 		};
-		req.session.userid = user.userid;
-		req.session.verifyEmail = false;
+		req.session.user = user;
+		
 		//validating the aadhar number:
 		//1. check if same aadhar card is already present or not
 		//2. check if the aadhar card is valid or not
     
-//        async function myAsyncFunction() {
-//          try {
-//            const result = await somethingThatReturnsAPromise();
-//
-//            console.log(result);
-//          } catch (error) {
-//            console.log(error);
-//          }
-//        }
-        async function check_aadhar(aadhar_id,user){
-            // NOTE: use the try-catch block  
-            let results;
-            let msg="";
-            try{
-            	results = await aadhar_f.aadhar(aadhar_id);
-                console.log(JSON.stringify(results));
-                if(results["Succeeded"]!=null) {
-                    msg = true;
-                } else {
-                    msg = false;   
-                }
-                
-                console.log(msg);
-//                msg = msg.toString();
-                //if(msg.includes("not Valid")){
-                return msg;
-            }catch(err){
-                console.log(err)
-            }    
-        }
+	async function check_aadhar(aadhar_id){ 
+		let results;
+		let msg="";
+		try{
+			results = await aadhar_f.aadhar(aadhar_id);
+			//console.log(JSON.stringify(results));
+			if(results["Succeeded"]!=null) {
+				msg = true;
+			} else {
+				msg = false;   
+			}
+			//console.log(msg);
+			return msg;
+		}catch(err){
+			console.log(err)
+		}    
+	}
 
 	//validating the email address by sending the otp to it.
 	async function verifyEmail(){
 		try{
 			let email = {
 				emailList: user.userid,
-				subject: `Email Verification for Ticket Booking Site!`,
+				subject: `EmailID Verification for Ticket Booking Site!`,
 				body: ``
 			}
-			let getGeneratedOtp = {code:""};
-			await otp.sendOtp(email,getGeneratedOtp);
-			console.log("generatedOtp",getGeneratedOtp.code);
-			await otp.saveOtp(req,getGeneratedOtp.code);
-			return 'otpSaved';
 
+			await otp.sendOtp(email,req);
+			return "otpSent";
 		} catch(error) {
 			console.log(error);
+			return error;
 		}
 	}
 
 
 	async function final(){
 		try{
-			const [aadharVerify,emailVerify] = await Promise.all([check_aadhar(),verifyEmail()]);
+			const [aadharVerify,emailVerify] = await Promise.all([check_aadhar(user.aadhar_id),verifyEmail()]);
 			console.log([aadharVerify,emailVerify]);
-			if(aadharVerify==false || emailVerify!="otpSaved"){
+			if(aadharVerify==false || emailVerify!="otpSent"){
 				let msg = "";
-				if(aadharVerify==false && emailVerify!="otpSaved")
+				if(aadharVerify==false && emailVerify!="otpSent")
 					msg = `aadhar & email are invalid`;
 				else if(!aadharVerify)
 					msg = "aadhar is invalid";
@@ -88,24 +75,25 @@ exports.signupPost = function(req,res,next){
 				res.render("signup.ejs",{user:user,message:msg});
 			} 
 			else {
-				console.log(JSON.stringify(user));
-			
-				// var  sql1 = `insert into customer (name,userid,password,dob,address,aadhar_id,contact) values(?,?,?,?,?,?,?);`;
-				var sql1  = 'insert into customer set ?';
-				// var array = [user.name,user.userid,user.password,user.dob,user.address,user.aadhar_id,user.contact];
-				connection.query(sql1,user,(err,results)=>{
-					if(err){
-						console.log("error while signup: \n",err);
-						res.render('signup.ejs',{user:user,message:"check the details "});
-					} else {
-						console.log('successfully signed up!');
-						// next();
-						return true;
-						//res.end();
-						// res.redirect('/home',{message:"s"});
-						//res.redirect('/login'); 
-					}
-				});
+				//console.log(JSON.stringify(user));
+				// var sql1  = 'insert into customer set ?';
+				// // var array = [user.name,user.userid,user.password,user.dob,user.address,user.aadhar_id,user.contact];
+				// connection.query(sql1,user,(err,results)=>{
+				// 	if(err){
+				// 		console.log("error while signup: \n",err);
+				// 		res.render('signup.ejs',{user:user,message:"check the details "});
+				// 	} else {
+				// 		console.log('successfully signed up!');
+				// 		// next();
+				// 		return true;
+				// 		//res.end();
+				// 		// res.redirect('/home',{message:"s"});
+				// 		//res.redirect('/login'); 
+				// 	}
+				// });
+
+				// aadhar verified and email-verification link sent.
+				res.send("<h2>A Verification link has been sent to your email.</h2><br><h3>Click on that link to verify.</h3>");
 			}
 		} catch(err) {
 			console.log(err);
@@ -141,7 +129,7 @@ exports.loginPost = function(req,res){
 
 				console.log("userid: ",userid1,", passowrd: ",password1);
 
-				if(userid==userid1 && password==password1){
+				if(userid==userid1 && password==password1 && results[0].verified == true){
 					req.session.loggedin = true;
 					req.session.userid = userid1;
 					//req.session.user = results;
@@ -149,12 +137,12 @@ exports.loginPost = function(req,res){
 					console.log("The current logged in userid:",JSON.stringify(req.session.userid));
 					res.redirect('/home');
 				} else {
-					var message = 'Wrong Credentials!';
-					res.render('login.ejs',{message:message});
+					let msg = (results[0].verified)? "wrong credentials" : "Email not verified!";
+					res.render('login.ejs',{message:msg});
 				}
 			} else {          //if(err || results.length==0)
-				console.log("Issues in mysql-query for login-check! \n",err);
-				res.render('login.ejs',{message:"check your credentials"});
+				console.log("Issues in mysql-query for login-check or no such user found! \n",err);
+				res.render('login.ejs',{message:"wrong credentials"});
 			}
 		});
 

@@ -5,6 +5,7 @@ const seatBooking = require('./routes/seatBooking.js');
 const paymentConfig = require('./routes/paymentConfig.js');
 const otp = require('./routes/otp.js');
 const bookedHistory = require('./routes/bookingHistory.js');
+const sendEmail = require('./routes/sendEmail.js');
 
 const express = require('express');
 require('dotenv').config()		//configure the env-variables
@@ -13,8 +14,8 @@ const app = express();
 const mysql = require('mysql');
 const path = require('path');
 var session = require('express-session');
-const bcrypt = require('bcrypt');
-const salthRounds = 10;
+// const bcrypt = require('bcrypt');
+// const salthRounds = 10;
 
 // connecting to redis for session storage.
 const redis = require('redis');
@@ -102,7 +103,7 @@ app.post('/signup',user.signupPost);
 // app.get('/verify',(req,res)=>{
 // 	res.render("verify.ejs",{msg:""});
 // });
-app.post('/verify',otp.verifyOtp);
+app.get('/verify/',otp.verifyOtp);
 
 //checking for the authentication before loading the data from any of the below routes.
 app.use(authChecker);
@@ -136,12 +137,13 @@ app.post('/seatDetails',seatBooking.seatDetails);
 app.get('/payments',paymentConfig.getPayment);
 app.post('/payments',paymentConfig.postPayment);
 
-app.get('/tickets',(req,res,err)=>{
-    console.log("booked=Details:  in the /tickets route... ",JSON.stringify(paymentConfig.bd));
-//	let data = JSON.parse(JSON.stringify(paymentConfig.bd));
+/* Deprecated Route: (/tickets is not needed.)*/
+// app.get('/tickets',(req,res,next)=>{
+//     console.log("booked=Details:  in the /tickets route... ",JSON.stringify(paymentConfig.bd));
+// //	let data = JSON.parse(JSON.stringify(paymentConfig.bd));
     
-    res.render('template.ejs',{data:paymentConfig.bd});
-});
+//     res.render('template.ejs',{data:paymentConfig.bd});
+// });
 
 app.get('/bookedHistory',bookedHistory.bookedHistory);
 
@@ -248,3 +250,5 @@ app.listen(port,()=>{
 });
 
 module.exports = {app};
+
+exports.serverPort = port;

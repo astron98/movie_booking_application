@@ -1,4 +1,5 @@
 //backend-configuration for the  payment-gateway.
+const sendEmail = require('./sendEmail.js');
 
 let wallet={},
     savedCards={},
@@ -19,6 +20,8 @@ exports.getPayment = function(req,res){
 
 	totalAmount = totalSeatsBooked*seatPrice;
 	totalAmount_copy = totalAmount;
+
+	//Wallet() is fetching the wallet balance.
 	function Wallet() {
 		return new Promise((resolve,reject)=>{
 			connection.query(q1,[userid],(err,rows)=>{
@@ -26,7 +29,7 @@ exports.getPayment = function(req,res){
 					resolve(rows);
 				}
 				else{
-					reject(new Error('error in walletBalance query:\n'));
+					reject(new Error('error in walletBalance query:\n '+ err));
 				}
 			});
 		});
@@ -39,7 +42,7 @@ exports.getPayment = function(req,res){
 					resolve({savedCards:rows});
 				}
 				else{
-					reject(new Error('error in savedCards query:\n'));
+					reject(new Error('error in savedCards query:\n' + err));
 				}
 			});
 		});
@@ -110,7 +113,7 @@ exports.postPayment = function(req,res){
     //Part 0: apply promocode.
     function applyPromo(){
     	return new Promise((resolve,reject)=>{
-    		if(pay.promocode!=null){
+    		if(pay.promocode.length>0){
 				let flag=0,i=0;
 				for (i = 0; i < promocode.length; i++) {
 				    //console.log(promocode[i].promocode);
@@ -132,7 +135,7 @@ exports.postPayment = function(req,res){
     	});
     }
     
-    //Part 1: for only "new-cards"
+    //Part 1: for only "new-cards" (verify the new Cards throught validCards table.)
     function verifyNewCard(){
     	return new Promise((resolve,reject)=>{
     		if(pay.selectedCard=="-1"){
@@ -250,10 +253,10 @@ exports.postPayment = function(req,res){
     }
     
    let rid;
+
+   //generating a unique-key. for rid(receipt id)
    function uniqueKey(length){
    		return new Promise((resolve,reject)=>{
-   		
-   			//generating a unique-key. for rid(receipt id)
 			var result           = '';
 			var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 			var charactersLength = characters.length;
@@ -330,13 +333,13 @@ exports.postPayment = function(req,res){
 				resolve();
    		});
    	}
-//   	let bookedDetails={};
-//    exports = bookedDetails;
+
+	let bookedDetails = {};
     function updateDb(){
     	return new Promise((resolve,reject)=>{
     	
 			//Part 4: update booked-details table.(booking history.)
-			let bookedDetails = {
+			bookedDetails = {
 				rid: rid,
 				userid: req.session.userid,
 				mname: req.session.mname,
@@ -347,9 +350,37 @@ exports.postPayment = function(req,res){
 				mtiming: req.session.movie_details.mtiming,
 				mdate: req.session.movie_details.mdate
 			}
-            module.exports.bd = bookedDetails;
-            
-            
+
+			//sending the ticket through email.
+			let email = {
+				emailList: bookedDetails.userid,
+				subject: `Here is you Tickets for "${bookedDetails.mname}".`,
+				body: `
+						<div class="card" style="width: 18rem;border:3px solid grey; background: #b08ae6;">
+							<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+							<div class="card-body">
+							<h5 class="card-title"> <b>BookThatShow</b></h5>
+							<p class="card-text"><b>movie name:</b> ${bookedDetails.mname}<br>
+								<b>ticket id:</b> ${bookedDetails.rid}<br>
+								<b>hall id:</b> ${bookedDetails.hid}<br>
+								<b>theatre id:</b> ${bookedDetails.tid}<br>
+								<b>movie time:</b> ${bookedDetails.mtiming}<br>
+								<b>movie date:</b> ${bookedDetails.mdate}<br>
+							</p>
+							</div>
+						</div>
+						<hr>
+						<p><strong>Note: Reach to the venue around 20 minutes before the show.</strong></p>	
+					  `
+			}
+
+			sendEmail.sendEmail(email)
+			.then((emailResults)=>{
+				console.log(emailResults);
+				
+			})
+			.catch((err)=>{console.log(err)});
+			
 			console.log("bookedDetails: ",JSON.stringify(bookedDetails),"\n");
 			let insertQuery = "insert into booked_details set ?";
 			connection.query(insertQuery,[bookedDetails],(err,rows)=>{
@@ -371,9 +402,10 @@ exports.postPayment = function(req,res){
 				}
 			});
     	});
-    }
-    
-    let u1,u2,u3;	//not needed...
+	}
+	
+	let u1,u2,u3;	//not needed...
+	//part 5: Calling the finalResult() function.
     async function finalResult(){
     	try{
     		console.log("entered the finalResult() func...\n\n")
@@ -381,8 +413,8 @@ exports.postPayment = function(req,res){
 			await verifyNewCard();
 			[u1,rid,u2,u3] = await Promise.all([updateBalance(),uniqueKey(10),updateCard(),updateWallet()]);
 			await createArr();
-			await updateDb();
-			res.redirect('/tickets');
+			await updateDb();	//updateDB and sendTickets through email.
+			res.render('tickets.ejs',{data:bookedDetails});
     	} catch(err) {
     		console.log("error in the finalResult() function...\n",err);
     		//return res.redirect('back');

@@ -75,19 +75,11 @@
                               <input type="text" name="contact" class="form-control form-control-user" id="contact" placeholder="contact number" size="10" required autocomplete="off" />
                            </div>
 
-                           <button id="btn-login signup-button type="submit" onclick="sendOtp()" class="btn btn-primary btn-user btn-block">Signup </button>
+                           <button id="btn-login signup-button type="submit" class="btn btn-primary btn-user btn-block">Signup </button>
                            <hr>
 
                         </form>
 
-                        <div id="verify-otp" style="width: 200px;">
-                           <!-- <form id="otp" action="/verify" method="POST" autocomplete="off"> -->
-                              <input type="password" class="form-control form-control-user" name="enteredOtp" id="otp-input" placeholder="OTP" required/>
-                              <span id="invalid-otp" style="color: crimson;">
-                              </span>
-                              <button id="btn-login" onclick="verifyOtp()" type="submit" class="btn btn-primary btn-user btn-block">Verify </button>
-                           <!-- </form> -->
-                        </div>
                         <hr>
                         <div class="text-center">
                            <a class="small" href="/login">Already have an account? Login!</a>
@@ -107,31 +99,33 @@
 
          //var email_regex  = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
          // var password_regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
-         $(document).ready(function(){
-            $('#verify-otp').hide();
-         });
-         function sendOtp(){
-               $('#signup-form').hide();
-               $('#verify-otp').show();
-         }
+         
+         /* deprecated version's code:*/
+         // $(document).ready(function(){
+         //    $('#verify-otp').hide();
+         // });
+         // function sendOtp(){
+         //       $('#signup-form').hide();
+         //       $('#verify-otp').show();
+         // }
 
-         $("#otp").on('submit', function(e){
-            e.preventDefault();
-            verifyOtp();
-         });
-         async function verifyOtp(){
-            let otp = $('#otp-input').val();
-            await $.post("/verify",{enteredOtp:otp},(data)=>{
-               console.log(data);
-               if(data.isValid==false)
-                  $("#invalid-otp").val("invalid OTP!");
-               else{
-                  //let url  = window.location.protocol + "//" + window.location.host +"/login"
-                  window.location.href = "http://localhost:3000/login";
-                  //$.get("/login",{message:"successfully registered! Please login!"});
-               }  
-            });
-         }
+         // $("#otp").on('submit', function(e){
+         //    e.preventDefault();
+         //    verifyOtp();
+         // });
+         // async function verifyOtp(){
+         //    let otp = $('#otp-input').val();
+         //    await $.post("/verify",{enteredOtp:otp},(data)=>{
+         //       console.log(data);
+         //       if(data.isValid==false)
+         //          $("#invalid-otp").val("invalid OTP!");
+         //       else{
+         //          //let url  = window.location.protocol + "//" + window.location.host +"/login"
+         //          window.location.href = "http://localhost:3000/login";
+         //          //$.get("/login",{message:"successfully registered! Please login!"});
+         //       }  
+         //    });
+         // }
 
          function checkP(){ 
             var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
