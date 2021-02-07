@@ -1,6 +1,10 @@
-# Movie Booking web-app.  
+# Movie Booking web-app
 
-### Preinstallation Steps:
+### Tech Stack
+Nodejs, Express, MySql, JQuery
+
+---
+### Preinstallation Steps
 1. install nvm source:https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/
 2. install nodejs(version=10.17.0) using nvm.(command: `nvm install 10.17.0`)  
 3. **install mysql (version = 5.7)**  
